@@ -1,25 +1,24 @@
-const number1 = Number(prompt('Please enter number1'));
+const age = +prompt('Please enter your age');
 
-if (isNaN(number1)) {
-    alert('Not a number!!');
-  } 
 
-  else {
-    const number2 = Number(prompt('Please enter number2'));
+let city = prompt('Please enter your city');
 
-    if (isNaN(number2)) {
-        alert('Not a number!!');
+switch (city) {
+	case 'Kyiv':
+  	alert ('You live in a capitale of Ukraine');
+    break;
+  case 'London':
+  	alert ('You live in a capitale of Great Britain');
+    break;
+  case 'Washington':
+  	alert ('You live in a capitale of USA');
+    break;
+    case (city):
+      alert (`${'You live in'} ${city}`)
+      break;
+  default:
+    alert (0)
+    break;
+}
 
-      } else {
-        const number3 = Number(prompt('Please enter number3'));
-
-        if (isNaN(number3)) {
-            alert('Not a number!!');
-
-          } else {
-            const result = (number1 + number2 + number3) / 3;
-            alert (result);1
-          }
-      }
-  }
-
+console.log (city)
