@@ -14,10 +14,10 @@ switch (city) {
   	alert ('You live in a capitale of USA');
     break;
     case (city):
-      alert (`${'You live in'} ${city}`)
+      alert ('I dont know your city')
       break;
   default:
-    alert (0)
+    alert (`${'You live in'} ${city}`)
     break;
 }
 
