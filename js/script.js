@@ -1,24 +1,36 @@
-const age = +prompt('Please enter your age');
+const yearOfBirthday = +prompt('Please enter your year of birthday');
 
+if(!yearOfBirthday) {
+  alert('Okey, without your birthday');
+  const age = ('I dont know your age')
+} else{
+  const age = (`You are ${2023 - yearOfBirthday} years old`)
+}
 
-let city = prompt('Please enter your city');
+const city = prompt('Please enter your city');
+if (!city){
+  alert('Okey, without your city');
+}
 
 switch (city) {
 	case 'Kyiv':
-  	alert ('You live in a capitale of Ukraine');
+  	alert (`You live in a capitale of Ukraine. ${age}19`);
     break;
   case 'London':
-  	alert ('You live in a capitale of Great Britain');
+  	alert (`You live in a capitale of Great Britain. ${age}`);
     break;
   case 'Washington':
-  	alert ('You live in a capitale of USA');
+  	alert (`You live in a capitale of USA. ${age}`);
     break;
-    case (city):
-      alert ('I dont know your city')
+    case null:
+      alert (`I dont know your city ${age}`)
       break;
   default:
-    alert (`${'You live in'} ${city}`)
+    alert (`You live in ${city}. ${age}`)
     break;
 }
 
 console.log (city)
+
+// const sport = prompt('Plaese enter your sport')
+// if (!sport) alert('Okey, without your sport')
