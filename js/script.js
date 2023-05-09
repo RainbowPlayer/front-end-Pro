@@ -24,6 +24,9 @@ switch (city) {
   case null:
     alert (`I dont know your city. ${age}`);
     break;
+  case '':
+    alert (`I dont know your city. ${age}`);
+    break;
   default:
     alert (`You live in ${city}. ${age}`);
     break;
@@ -45,6 +48,9 @@ switch (sport){
     alert (`Nice choise. I know only Jordan, do you?`);
     break;
   case null:
+    alert (`I dont know about your favorite sport`);
+    break;
+  case '':
     alert (`I dont know about your favorite sport`);
     break;
   default:
