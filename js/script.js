@@ -1,6 +1,7 @@
 const massiveLong = +prompt(`How long massive we need?`);
-if (massiveLong == isNaN){
-    alert (Error);
+if (isNaN(massiveLong)){
+    alert (`Not a number`);
+    break;
 }
 
 const array = [];
