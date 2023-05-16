@@ -53,10 +53,24 @@ let users = [
     "phone": "+1 (837) 586-3283",
     "address": "314 Dunne Place, Bawcomville, Guam, 9053"
     }
-    ]
+]
 
-    let phones = users
-    .filter(user => parseFloat(user.balance.replace(/[\$,]/g, '')) > 2000)
-    .map(user => user.phone);
+  
+function filterRichUsers(users){
+    let richUsers = users.filter(user => Number(user.balance.replace('$', '').replace(',', '')) > 2000);
+    let phoneNumbers = richUsers.map(user => user.phone);
+    return phoneNumbers;
+}
+    
+let richUsersPhones = filterRichUsers(users);
+    
+console.log(richUsersPhones);
 
-    console.log(phones);
+function totalBalance(users){
+    let total = users.reduce((sum, user) => sum + Number(user.balance.replace('$', '').replace(',', '')), 0);
+    return total.toFixed(2);
+}
+
+let total = totalBalance(users);
+
+console.log(`Сума всіх балансів $${total}`);
