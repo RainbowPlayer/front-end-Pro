@@ -1,76 +1,22 @@
-let str = '';
-
-for (let i = 20; i <= 30; i += 0.5) {
-  str += i + ' ';
-  
+const massiveLong = +prompt(`How long massive we need?`);
+if (massiveLong == isNaN){
+    alert (Error);
 }
 
-console.log(str);
+const array = [];
 
-//1
-
-const oneDollar = 27;
-let convert = '';
-
-for (let o = 10; o <= 100; o += 10){
-  let grivnya = o * oneDollar;
-  convert += `${o} dollars ${grivnya} grivnays;\n `;
+for(let i = 0; i < massiveLong; i++){
+    array[i] = prompt(`enter item` + (i+1));
 }
 
-console.log(convert)
+array.sort(function(a, b){
+    return a - b;
+});
 
-//2
+alert(array)
 
-let N = prompt(`Please tape number`);
-let twoLine = '';
+array.splice(1, 3)
 
-for (let j = 0; j <= 100; j++){
- if (j * j <= N) {
-  twoLine += j + ` `;
- }
-}
+alert(array)
 
-console.log(twoLine);
-
-//3
-
-let m = prompt("Type a number");
-
-function isPrime(m) {
-    if (m <= 1) {
-        return false;
-    }
-
-    for (let i = 2; i <= Math.sqrt(m); i++) {
-        if (m % i === 0) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-console.log(isPrime(m));
-
-//4
-
-const f = +prompt(`type a number`);
-let found = false;
-
-for(let i = 1; i <= f; i++){
-   if (Math.pow(3, i) === f){
-    found = true;
-    break;
-   }
-}
-
-if (found){
-    alert(true);
-} else{
-    alert(false);
-}
-
-console.log(found);
-
-//5
-
+console.log(array)
