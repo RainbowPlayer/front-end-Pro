@@ -1,12 +1,9 @@
-const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-const key = generateKey(16, characters);
-
-function generateKey (length, elements){
-    let result = ``;
-    for (let i = 1; i <= length; i++){
-        result += elements.charAt(Math.floor(Math.random() * elements.length));
+function pow(num, degree) {
+    if (degree === 0) {
+        return 1;
+    } else {
+        return num * pow(num, degree - 1);
     }
-    return result;
 }
 
-console.log(key);
+console.log(pow(2, 3));
