@@ -1,15 +1,17 @@
-const targetIn = document.querySelector(`#target`);
-
-targetIn.addEventListener("mouseover" , function(event){
-    let ghost = document.createElement(`img`);
-    ghost.src = './real.gif';
-    ghost.id = `ghostGif`;
-    targetIn.appendChild(ghost);
-});
-
-targetIn.addEventListener("mouseout" , function(event){
-    let ghost = document.querySelector(`#ghostGif`);
-    if (ghost) {
-        ghost.remove();
+let ladder = {
+    step: 0,
+    up: function () {
+        this.step++;
+        return this;
+    },
+    down: function () {
+        this.step--;
+        return this;
+    },
+    showStep: function () {
+        alert(this.step);
+        return this;
     }
-});
+};
+
+ladder.up().up().down().showStep();
