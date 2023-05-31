@@ -1,9 +1,15 @@
-function pow(num, degree) {
-    if (degree === 0) {
-        return 1;
-    } else {
-        return num * pow(num, degree - 1);
-    }
-}
+const targetIn = document.querySelector(`#target`);
 
-console.log(pow(2, 3));
+targetIn.addEventListener("mouseover" , function(event){
+    let ghost = document.createElement(`img`);
+    ghost.src = './real.gif';
+    ghost.id = `ghostGif`;
+    targetIn.appendChild(ghost);
+});
+
+targetIn.addEventListener("mouseout" , function(event){
+    let ghost = document.querySelector(`#ghostGif`);
+    if (ghost) {
+        ghost.remove();
+    }
+});
