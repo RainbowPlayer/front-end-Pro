@@ -1,12 +1,14 @@
-let sum = (function(){
+function sum (){
     let total = 0;
 
     return function(num){
         total += num;
         return total;
     }
-})();
+}
 
-console.log(sum(3));
-console.log(sum(5));
-console.log(sum(20));
+let i = sum();
+
+console.log(i(3));
+console.log(i(5));
+console.log(i(20));
