@@ -1,17 +1,12 @@
-let ladder = {
-    step: 0,
-    up: function () {
-        this.step++;
-        return this;
-    },
-    down: function () {
-        this.step--;
-        return this;
-    },
-    showStep: function () {
-        alert(this.step);
-        return this;
-    }
-};
+let sum = (function(){
+    let total = 0;
 
-ladder.up().up().down().showStep();
+    return function(num){
+        total += num;
+        return total;
+    }
+})();
+
+console.log(sum(3));
+console.log(sum(5));
+console.log(sum(20));
