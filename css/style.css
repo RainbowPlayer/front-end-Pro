@@ -1,0 +1,37 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.swiper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.img-width {
+  max-width: 100%;
+  max-width: 600px;
+}
+
+.arrows {
+  background-color: blueviolet;
+  border: 1px solid black;
+  width: 10px;
+}
+
+.left,
+.right {
+  position: absolute;
+}
+
+.right {
+  right: 180px;
+  top: 140px;
+}
+
+.left {
+  left: 180px;
+  top: 140px;
+}
