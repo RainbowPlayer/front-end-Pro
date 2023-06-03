@@ -1,37 +1,32 @@
 .container {
-  max-width: 1000px;
   margin: 0 auto;
-  padding: 0;
-}
-
-.swiper {
+  max-width: 1080px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-.img-width {
-  max-width: 100%;
-  max-width: 600px;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.arrows {
-  background-color: blueviolet;
-  border: 1px solid black;
-  width: 10px;
+#loader {
+  border: 16px solid rgb(251, 255, 2);
+  border-top: 16px solid blue;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
 }
 
-.left,
-.right {
-  position: absolute;
-}
-
-.right {
-  right: 180px;
-  top: 140px;
-}
-
-.left {
-  left: 180px;
-  top: 140px;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

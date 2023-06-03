@@ -1,37 +1,32 @@
-const sliderChange = document.querySelector('#change');
-const leftClick = document.querySelector('#left');
-const rightClick = document.querySelector('#right');
-const images = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg"];
-let countImages = 0;
+const loginForm = document.querySelector("#loginForm");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+const loader = document.querySelector("#loader");
+const button = document.querySelector("#button");
 
-rightClick.addEventListener("click", function(){
-    countImages++;
-    if (countImages < images.length){
-        sliderChange.src = images[countImages];
-    }
+email.addEventListener('input', checkInput);
+password.addEventListener('input', checkInput);
 
-    if (countImages === images.length - 1){
-        rightClick.style.display = 'none';
-    }
+function checkInput(){
 
-    if (countImages !== 0){
-        leftClick.style.display = 'block';
+    if(email && password){
+        button.style.display = "flex";
+    } else {
+        button.style.display = "none";
     }
+}
+
+loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    console.log(`Email: ${email.value}`);
+    console.log(`Password: ${password.value}`);
+
+    loginForm.style.display = 'none';
+
+    loader.style.display = 'block';
+
+    setTimeout(function() {
+        window.location.href = './pages/home.html';
+    }, 2000);
 });
-
-leftClick.addEventListener("click", function(){
-    countImages--;
-    if (countImages >= 0){
-        sliderChange.src = images[countImages];
-    }
-
-    if (countImages === 0){
-        leftClick.style.display = 'none';
-    }
-
-    if (countImages !== images.length - 1){
-        rightClick.style.display = 'block';
-    }
-});
-
-leftClick.style.display = 'none';

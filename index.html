@@ -12,12 +12,18 @@
 <body>
     <section>
         <div class="container">
-            <div class="swiper" id="swiper">
-                <p class="arrows right" id="right">R</p>
-                <img class="img-width" id="change" src="./img/1.jpg" alt="1">
-                <p class="arrows left" id="left">L</p>
-            </div>
-
+            <form class="form" id="loginForm">
+                <label>
+                    <input type="email" required id="email" placeholder="Email">
+                </label>
+                <label>
+                    <input type="password" required id="password" placeholder="Password">
+                </label>
+                <button type="submit" style="display: none;" id="button">
+                    Login
+                </button>
+            </form>
+            <div id="loader" style="display: none;"></div>
         </div>
     </section>
     <script src="./js/script.js"></script>
