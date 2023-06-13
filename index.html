@@ -12,12 +12,46 @@
 <body>
     <section>
         <div class="container">
-            <div class="swiper" id="swiper">
-                <p class="arrows right" id="right">R</p>
-                <img class="img-width" id="change" src="./img/1.jpg" alt="1">
-                <p class="arrows left" id="left">L</p>
+            <form class="form-style">
+                <h2>Оформлення</h2>
+                <label>
+                    ПІБ
+                    <input type="text" id="surname">
+                </label>
+                <label>
+                    Місто
+                    <select id="city">
+                        <option value="1">-оберіть місто-</option>
+                        <option value="2">Київ</option>
+                        <option value="3">Львів</option>
+                        <option value="4">Вінниця</option>
+                    </select>
+                </label>
+                <label>
+                    Склад Нової Пошти
+                    <input type="text" id="post">
+                </label>
+                <label>
+                    Оплата
+                    <select id="pay">
+                        <option value="1">-оберіть оплату-</option>
+                        <option value="2">Післяплати</option>
+                        <option value="3">оплати банківської картки</option>
+                    </select>
+                </label>
+                <label>
+                    Кількість товару
+                    <input type="number" id="amount">
+                </label>
+                <label>
+                    Коментар
+                    <input class="coment" type="text" id="cometName">
+                </label>
+                <button id="submit" class="button" value="submit">Submit</button>
+            </form>
+            <div id="resalt">
+                <h2>РЕЗУЛЬТАТ</h2>
             </div>
-
         </div>
     </section>
     <script src="./js/script.js"></script>

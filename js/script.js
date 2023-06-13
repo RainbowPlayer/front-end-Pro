@@ -1,37 +1,36 @@
-const sliderChange = document.querySelector('#change');
-const leftClick = document.querySelector('#left');
-const rightClick = document.querySelector('#right');
-const images = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg"];
-let countImages = 0;
+const surName = document.querySelector('#surname');
+const city = document.querySelector('#city');
+const post = document.querySelector('#post');
+const pay = document.querySelector('#pay');
+const number = document.querySelector('#amount');
+const button = document.querySelector('#submit');
+const resalt = document.querySelector('#resalt');
 
-rightClick.addEventListener("click", function(){
-    countImages++;
-    if (countImages < images.length){
-        sliderChange.src = images[countImages];
+
+function validateInput(input) {
+    return input.value;
+}
+
+button.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    if (!validateInput(surName) || !validateInput(post) || !validateInput(number) || city.value === "1" || pay.value === "1") {
+        alert('Будь ласка, заповніть всі поля');
+        return;
     }
 
-    if (countImages === images.length - 1){
-        rightClick.style.display = 'none';
-    }
+    let orderDetails = [
+        `ПІБ: ${surName.value}`,
+        `Місто: ${city.options[city.selectedIndex].text}`,
+        `Склад Нової Пошти: ${post.value}`,
+        `Тип оплати: ${pay.options[pay.selectedIndex].text}`,
+        `Кількість: ${number.value}`
+    ];
 
-    if (countImages !== 0){
-        leftClick.style.display = 'block';
+    for(let i = 0; i < orderDetails.length; i++) {
+        let newResalt = document.createElement('p');
+        newResalt.innerHTML = orderDetails[i];
+        resalt.append(newResalt);
     }
 });
 
-leftClick.addEventListener("click", function(){
-    countImages--;
-    if (countImages >= 0){
-        sliderChange.src = images[countImages];
-    }
-
-    if (countImages === 0){
-        leftClick.style.display = 'none';
-    }
-
-    if (countImages !== images.length - 1){
-        rightClick.style.display = 'block';
-    }
-});
-
-leftClick.style.display = 'none';
