@@ -1,43 +1,27 @@
-function Human (name, gender){
-    this.name = name;
-    this.gender = gender;
-}
+fetch('http://api.openweathermap.org/data/2.5/weather?q=LVIV&units=metric&APPID=5d066958a60d315387d9492393935c19')
 
-function flat() {
-    this.residents = [];
-}
+.then(function(response) {
+    return response.json();
+})
 
-flat.prototype.addResident = function(Human) {
-    this.residents.push(Human);
-}
+.then(function(obj) {
 
-function House(maxFlats) {
-    this.flats = [];
-    this.maxFlats = maxFlats;
-}
+    const weather = document.querySelector('#weather');
 
-House.prototype.addFlat = function(flat) {
-    if (this.flats.length < this.maxFlats) {
-        this.flats.push(flat);
-    } else {
-        console.log('максимально квартир');
-    }
-}
+    let weatherInfo = '';
+    weatherInfo += 'Місто: ' + obj.name + '<br>';
+    weatherInfo += 'Температура: ' + obj.main.temp + '<br>';
+    weatherInfo += 'Тиск: ' + obj.main.pressure + '<br>';
+    weatherInfo += 'Опис: ' + obj.weather[0].description + '<br>';
+    weatherInfo += 'Вологість: ' + obj.main.humidity + '<br>';
+    weatherInfo += 'Швидкість вітру: ' + obj.wind.speed + '<br>';
+    weatherInfo += 'Напрям вітру (у градусах): ' + obj.wind.deg + '<br>';
+    weatherInfo += 'Значок: <img src="' + 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png' + '">' + '<br>';
 
-let human1 = new Human('Kolia', 'male');
-let human2 = new Human('Olia', 'female');
-let human3 = new Human('Vova', 'male');
+    weather.innerHTML = weatherInfo;
+    
+})
 
-let flat1 = new flat();
-let flat2 = new flat();
-
-flat1.addResident(human1);
-flat1.addResident(human2);
-flat2.addResident(human3);
-
-let house = new House(5);
-
-house.addFlat(flat1);
-house.addFlat(flat2);
-
-console.log(house);
+.catch(function(err) {
+    console.log(err);
+});
