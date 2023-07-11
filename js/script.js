@@ -1,43 +1,73 @@
-function Human (name, gender){
-    this.name = name;
-    this.gender = gender;
-}
+const submit = document.querySelector("#submit");
+const postPlace = document.querySelector("#postPlace");
 
-function flat() {
-    this.residents = [];
-}
+submit.addEventListener("click", function(event){
+    event.preventDefault();
 
-flat.prototype.addResident = function(Human) {
-    this.residents.push(Human);
-}
+    postPlace.innerHTML = '';
 
-function House(maxFlats) {
-    this.flats = [];
-    this.maxFlats = maxFlats;
-}
+    const postId = document.querySelector("#postId").value;
 
-House.prototype.addFlat = function(flat) {
-    if (this.flats.length < this.maxFlats) {
-        this.flats.push(flat);
-    } else {
-        console.log('максимально квартир');
-    }
-}
+    if(postId < 1 || postId > 100){
+        alert("Invalid ID");
+        return;
+    };
 
-let human1 = new Human('Kolia', 'male');
-let human2 = new Human('Olia', 'female');
-let human3 = new Human('Vova', 'male');
+    fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
 
-let flat1 = new flat();
-let flat2 = new flat();
+    .then(function(response) {
 
-flat1.addResident(human1);
-flat1.addResident(human2);
-flat2.addResident(human3);
+        if (!response.ok) {
+                throw new Error(response.status);
+        }
+        return response.json();
 
-let house = new House(5);
+    })
 
-house.addFlat(flat1);
-house.addFlat(flat2);
+    .then(function(data){
+        const postDiv = document.createElement("div");
 
-console.log(house);
+        postDiv.innerHTML = `<h2>${data.title}</h2><p>${data.body}</p><button id="loadCom">Load Comment</button>`;
+        postPlace.appendChild(postDiv);
+
+        const loadComm = document.querySelector("#loadCom");
+
+        loadComm.addEventListener("click", function() {
+
+            this.disabled = true;
+
+            fetch('https://jsonplaceholder.typicode.com/posts/' + postId + '/comments')
+
+                .then(function(response){
+                    if (!response.ok) {
+                        throw new Error(response.status);
+                    }
+                    return response.json();
+                })
+
+                .then(function(comments){
+
+                    comments.forEach(function(comment){
+                        const comDiv = document.createElement("div");
+
+                        comDiv.innerHTML = `<h3>${comment.name}</h3><p>${comment.body}</p>`;
+                        postPlace.appendChild(comDiv);
+                    });
+
+                })
+
+                .catch(function(error){
+                    console.error('Error:', error);
+                });
+        })
+    })
+
+    .catch(function(error) {
+        console.error('Error:', error);
+    });
+
+});
+
+
+
+
